@@ -1,24 +1,6 @@
 # Acess Website at : https://honeywell-anomaly-detection-q3.vercel.app/
 <img width="1326" height="828" alt="image" src="https://github.com/user-attachments/assets/fbc01aa2-c641-4ae1-875b-47aa94802c09" />
 
-
-# Anomalyze
-
-
-## First - Initial Commit Commit
-
-## Dataset Folder Added
-
-## Added CSV
-
-## Updated Labelling Script
-
-## Updated labelling script to update runID and label anomaly
-
-
-
-
-
 # AnomaLyze - Ice Cream Factory Anomaly Detection System
 
 ## Complete Setup and Deployment Guide
