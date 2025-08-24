@@ -1,4 +1,5 @@
 # Acess Website at : https://honeywell-anomaly-detection-q3.vercel.app/
+<img width="1326" height="828" alt="image" src="https://github.com/user-attachments/assets/fbc01aa2-c641-4ae1-875b-47aa94802c09" />
 
 
 # Anomalyze
