@@ -1,0 +1,7 @@
+/venv 
+/Assets 
+
+/Dataset 
+/Labelled Data
+/backend/data/exported_data.csv
+/backend/models/anomaly_detector.pkl

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ice Cream Factory - Anomaly Detection System</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="header__brand">
+                <div class="header__logo">🏭</div>
+                <div class="header__title">
+                    <h1>Ice Cream Factory</h1>
+                    <span>Anomaly Detection System</span>
+                </div>
+            </div>
+            <div class="header__controls">
+                <button class="btn btn--outline header__theme-toggle" id="themeToggle">
+                    🌙 Dark Mode
+                </button>
+                <div class="header__status">
+                    <div class="status-indicator" id="systemStatus">
+                        <span class="status-dot status-dot--warning"></span>
+                        <span>System Active</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-container">
+            <!-- Sidebar Navigation -->
+            <aside class="sidebar">
+                <nav class="nav">
+                    <ul class="nav__list">
+                        <li class="nav__item">
+                            <button class="nav__link nav__link--active" data-page="dashboard">
+                                📊 Dashboard
+                            </button>
+                        </li>
+                        <li class="nav__item">
+                            <button class="nav__link" data-page="process">
+                                ⚙️ Process Flow
+                            </button>
+                        </li>
+                        <li class="nav__item">
+                            <button class="nav__link" data-page="anomaly">
+                                🚨 Anomaly Detection
+                            </button>
+                        </li>
+                        <li class="nav__item">
+                            <button class="nav__link" data-page="analytics">
+                                📈 Analytics
+                            </button>
+                        </li>
+                        <li class="nav__item">
+                            <button class="nav__link" data-page="reports">
+                                📋 Reports
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <!-- Dashboard Overview Page -->
+                <div class="page page--active" id="dashboard">
+                    <div class="page__header">
+                        <h2>Production Line Overview</h2>
+                        <p>Real-time monitoring of ice cream production modules</p>
+                    </div>
+
+                    <!-- Production Status Cards -->
+                    <div class="status-grid">
+                        <div class="status-card">
+                            <h3>Production Status</h3>
+                            <div class="status-value">
+                                <span class="status-number">94.2%</span>
+                                <span class="status-label">Efficiency</span>
+                            </div>
+                            <div class="status status--success">Operational</div>
+                        </div>
+                        <div class="status-card">
+                            <h3>Active Anomalies</h3>
+                            <div class="status-value">
+                                <span class="status-number" id="activeAnomalies">2</span>
+                                <span class="status-label">Current</span>
+                            </div>
+                            <div class="status status--warning">Attention</div>
+                        </div>
+                        <div class="status-card">
+                            <h3>Batch Quality</h3>
+                            <div class="status-value">
+                                <span class="status-number">91.8%</span>
+                                <span class="status-label">Average</span>
+                            </div>
+                            <div class="status status--success">Good</div>
+                        </div>
+                        <div class="status-card">
+                            <h3>System Health</h3>
+                            <div class="status-value">
+                                <span class="status-number">97.5%</span>
+                                <span class="status-label">Uptime</span>
+                            </div>
+                            <div class="status status--success">Healthy</div>
+                        </div>
+                    </div>
+
+                    <!-- Module Status Grid -->
+                    <div class="modules-grid" id="modulesGrid">
+                        <!-- Module cards will be populated by JavaScript -->
+                    </div>
+
+                    <!-- Real-time Charts -->
+                    <div class="charts-row">
+                        <div class="chart-container" style="position: relative; height: 300px;">
+                            <h3>Temperature Monitoring</h3>
+                            <canvas id="temperatureChart"></canvas>
+                        </div>
+                        <div class="chart-container" style="position: relative; height: 300px;">
+                            <h3>Level Monitoring</h3>
+                            <canvas id="levelChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Process Flow Page -->
+                <div class="page" id="process">
+                    <div class="page__header">
+                        <h2>Ice Cream Production Process</h2>
+                        <p>Interactive process flow diagram</p>
+                    </div>
+
+                    <div class="process-flow">
+                        <div class="process-module" data-module="Mixer">
+                            <div class="module-icon">🥛</div>
+                            <div class="module-info">
+                                <h4>Mixer</h4>
+                                <div class="module-status" data-status="normal">Normal</div>
+                            </div>
+                            <div class="flow-arrow">→</div>
+                        </div>
+
+                        <div class="process-module" data-module="Pasteurizer">
+                            <div class="module-icon">🔥</div>
+                            <div class="module-info">
+                                <h4>Pasteurizer</h4>
+                                <div class="module-status" data-status="warning">Warning</div>
+                            </div>
+                            <div class="flow-arrow">→</div>
+                        </div>
+
+                        <div class="process-module" data-module="Homogenizer">
+                            <div class="module-icon">🌀</div>
+                            <div class="module-info">
+                                <h4>Homogenizer</h4>
+                                <div class="module-status" data-status="normal">Normal</div>
+                            </div>
+                            <div class="flow-arrow">→</div>
+                        </div>
+
+                        <div class="process-module" data-module="AgeingCooling">
+                            <div class="module-icon">❄️</div>
+                            <div class="module-info">
+                                <h4>Ageing & Cooling</h4>
+                                <div class="module-status" data-status="normal">Normal</div>
+                            </div>
+                            <div class="flow-arrow">→</div>
+                        </div>
+
+                        <div class="process-module" data-module="DynamicFreezer">
+                            <div class="module-icon">🧊</div>
+                            <div class="module-info">
+                                <h4>Dynamic Freezer</h4>
+                                <div class="module-status" data-status="anomaly">Anomaly</div>
+                            </div>
+                            <div class="flow-arrow">→</div>
+                        </div>
+
+                        <div class="process-module" data-module="Hardening">
+                            <div class="module-icon">📦</div>
+                            <div class="module-info">
+                                <h4>Hardening</h4>
+                                <div class="module-status" data-status="normal">Normal</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="module-details card" id="moduleDetails">
+                        <div class="card__header">
+                            <h3>Module Details</h3>
+                        </div>
+                        <div class="card__body">
+                            <p>Click on a module above to view detailed information</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Anomaly Detection Page -->
+                <div class="page" id="anomaly">
+                    <div class="page__header">
+                        <h2>Anomaly Detection & Alerts</h2>
+                        <p>Real-time anomaly monitoring and prediction</p>
+                    </div>
+
+                    <div class="anomaly-alerts">
+                        <h3>Recent Anomalies</h3>
+                        <div class="alerts-list" id="alertsList">
+                            <!-- Alerts will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="anomaly-chart-container" style="position: relative; height: 400px;">
+                        <h3>Anomaly Distribution</h3>
+                        <canvas id="anomalyChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Analytics Page -->
+                <div class="page" id="analytics">
+                    <div class="page__header">
+                        <h2>Performance Analytics</h2>
+                        <p>Historical trends and performance metrics</p>
+                    </div>
+
+                    <div class="analytics-grid">
+                        <div class="chart-container" style="position: relative; height: 300px;">
+                            <h3>Batch Quality Trends</h3>
+                            <canvas id="qualityChart"></canvas>
+                        </div>
+                        <div class="chart-container" style="position: relative; height: 300px;">
+                            <h3>Module Performance</h3>
+                            <canvas id="performanceChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="batch-table">
+                        <h3>Recent Batches</h3>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Batch ID</th>
+                                    <th>Quality Score</th>
+                                    <th>Anomalies</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="batchTableBody">
+                                <!-- Table rows will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Reports Page -->
+                <div class="page" id="reports">
+                    <div class="page__header">
+                        <h2>Reports & Export</h2>
+                        <p>Generate and export production reports</p>
+                    </div>
+
+                    <div class="reports-controls">
+                        <div class="form-group">
+                            <label class="form-label">Report Type</label>
+                            <select class="form-control" id="reportType">
+                                <option value="anomaly">Anomaly Report</option>
+                                <option value="production">Production Summary</option>
+                                <option value="quality">Quality Analysis</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Date Range</label>
+                            <input type="date" class="form-control" id="startDate">
+                            <input type="date" class="form-control" id="endDate">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn--primary" id="generateReport">Generate Report</button>
+                            <button class="btn btn--secondary" id="exportData">Export Data</button>
+                        </div>
+                    </div>
+
+                    <div class="report-preview card">
+                        <div class="card__header">
+                            <h3>Report Preview</h3>
+                        </div>
+                        <div class="card__body" id="reportPreview">
+                            <p>Select report parameters and click "Generate Report" to preview</p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Module Detail Modal -->
+    <div class="modal hidden" id="moduleModal">
+        <div class="modal__overlay">
+            <div class="modal__content">
+                <div class="modal__header">
+                    <h3 id="modalTitle">Module Details</h3>
+                    <button class="modal__close" id="closeModal">&times;</button>
+                </div>
+                <div class="modal__body" id="modalBody">
+                    <!-- Modal content will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
